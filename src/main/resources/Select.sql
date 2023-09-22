@@ -1,0 +1,1 @@
+SELECT * FROM Persons WHERE City_Of_Living = :City_Of_Living;
