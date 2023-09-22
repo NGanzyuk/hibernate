@@ -17,4 +17,12 @@ public class PersonsService {
     public List<Persons> getPersonsByCity(String city) {
         return personsRepository.getPersonsByCity(city);
     }
+
+    public List<Persons> getPersonsByAge(int Age) {
+        return personsRepository.getPersonsByAge(Age);
+    }
+
+    public List<Persons> getPersonsByNameSurname(String Name, String Surname) {
+        return personsRepository.getPersonsByNameSurname(Name, Surname);
+    }
 }

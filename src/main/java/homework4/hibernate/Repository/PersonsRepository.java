@@ -15,7 +15,10 @@ import java.util.stream.Collectors;
 
 @Repository
 public class PersonsRepository {
-    private final String script = read("src/main/resources/Select.sql");
+    private final String scriptByCity = read("src/main/resources/SelectByCity.sql");
+    private final String scriptByAge = read("src/main/resources/SelectByAge.sql");
+    private final String scriptByNameSurname = read("src/main/resources/SelectByNameSurname.sql");
+
 
     private static String read(String scriptFileName) {
         try (InputStream is = new ClassPathResource(scriptFileName).getInputStream();
@@ -29,8 +32,20 @@ public class PersonsRepository {
     private EntityManager entityManager;
 
     public List<Persons> getPersonsByCity(String City_Of_Living) {
-        var query = entityManager.createQuery(script, Persons.class);
+        var query = entityManager.createQuery(scriptByCity, Persons.class);
         query.setParameter("City_Of_Living", City_Of_Living);
         return query.getResultList();
     }
+    public List<Persons> getPersonsByAge(int Age) {
+        var query = entityManager.createQuery(scriptByAge, Persons.class);
+        query.setParameter("Age", Age);
+        return query.getResultList();
+    }
+    public List<Persons> getPersonsByNameSurname(String Name, String Surname) {
+        var query = entityManager.createQuery(scriptByNameSurname, Persons.class);
+        query.setParameter("Name", Name);
+        query.setParameter("Surname", Surname);
+        return query.getResultList();
+    }
+
 }

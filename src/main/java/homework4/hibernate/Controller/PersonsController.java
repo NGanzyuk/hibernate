@@ -17,7 +17,16 @@ public class PersonsController {
     }
 
     @GetMapping("/persons/by-city")
-    public List<Persons> getPersons(@RequestParam("City_Of_Living") String city) {
+    public List<Persons> getPersonsByCity(@RequestParam("City_Of_Living") String city) {
         return personsService.getPersonsByCity(city);
     }
+    @GetMapping("/persons/by-age")
+    public List<Persons> getPersonsByAge(@RequestParam("Age") int Age) {
+        return personsService.getPersonsByAge(Age);
+    }
+    @GetMapping("/persons/by-name-surname")
+    public List<Persons> getPersonsByNameSurname(@RequestParam("Name") String Name, @RequestParam("Surname") String Surname) {
+        return personsService.getPersonsByNameSurname(Name, Surname);
+    }
+
 }
